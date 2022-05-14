@@ -36,15 +36,8 @@ function deleteNth(arr, n) {
 function persistence(num, times = 0) {
   if (num.toString().length === 1) return times;
 
-  const newTimes = times + 1;
-
-  return persistence(
-    num
-      .toString()
-      .split('')
-      .reduce((a, b) => a * b),
-    newTimes
-  );
+  // prettier-ignore
+  return persistence( num.toString().split('').reduce((a, b) => a * b) ,( times += 1 ));
 }
 
 console.log(persistence(39));
