@@ -43,3 +43,18 @@ function persistence(num, times = 0) {
 console.log(persistence(39));
 console.log(persistence(999));
 console.log(persistence(4));
+
+// Solutions of Users I am Following
+
+// persistence = (n, c) =>
+//   n > 9
+//     ? persistence(
+//         n
+//           .toString()
+//           .split('')
+//           .reduce((x, y) => x * y),
+//         c ? c + 1 : 1
+//       )
+//     : c
+//     ? c
+//     : 0;
