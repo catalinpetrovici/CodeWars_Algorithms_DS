@@ -31,66 +31,42 @@
 
 // ! My Solution
 
-// function findEvenIndex(arr, index = Math.trunc(arr.length / 2), rArray = -1) {
-//   const lastRArray = rArray;
+function findEvenIndex(arr, index = Math.trunc(arr.length / 2)) {
+  const leftArray = arr.slice(0, index).reduce((acc, curr) => acc + curr, 0);
+  // prettier-ignore
+  const rightArray = arr.slice(index + 1, arr.length).reduce((acc, curr) => acc + curr, 0);
 
-//   const leftArray = arr.slice(0, index).reduce((acc, curr) => acc + curr, 0);
-//   // prettier-ignore
-//   const rightArray = arr.slice(index + 1, arr.length).reduce((acc, curr) => acc + curr, 0);
+  if (leftArray === rightArray) return index;
 
-//   //   console.log(leftArray, rightArray, lastRArray);
-//   if (leftArray === lastRArray) return -1;
+  if (leftArray > rightArray) {
+    index -= 1;
+  }
+  if (leftArray < rightArray) {
+    index += 1;
+  }
 
-//   if (leftArray === rightArray) return index;
-
-//   if (leftArray > rightArray) {
-//     index -= 1;
-//   }
-//   if (leftArray < rightArray) {
-//     index += 1;
-//   }
-
-//   return findEvenIndex(arr, index, rightArray);
-// }
-
-// function findEvenIndex(arr, index = Math.trunc(arr.length / 2), rArray = -1) {
-//   const lastRArray = rArray;
-//   const leftArray = arr.slice(0, index).reduce((acc, curr) => acc + curr, 0);
-//   if (leftArray === lastRArray) return -1;
-
-//   // prettier-ignore
-//   const rightArray = arr.slice(index + 1, arr.length).reduce((acc, curr) => acc + curr, 0);
-
-//   if (leftArray === rightArray) return index;
-
-//   if (leftArray > rightArray) {
-//     index -= 1;
-//   }
-//   if (leftArray < rightArray) {
-//     index += 1;
-//   }
-
-//   return findEvenIndex(arr, index, rightArray);
-// }
+  return findEvenIndex(arr, index);
+}
 
 //
 // But Maximum call stack size exceeded when are too much elements in array
 
 // Right Answer
-function findEvenIndex(arr) {
-  let left = 0;
-  let right = arr.reduce((acc, curr) => acc + curr, 0);
+// function findEvenIndex(arr) {
+//   let left = 0;
+//   let right = arr.reduce((acc, curr) => acc + curr, 0);
 
-  for (let i = 0; i < arr.length; i++) {
-    right -= arr[i];
-    if (left === right) return i;
-    left += arr[i];
-  }
+//   for (let i = 0; i < arr.length; i++) {
+//     right -= arr[i];
+//     if (left === right) return i;
+//     left += arr[i];
+//   }
 
-  return -1;
-}
+//   return -1;
+// }
 
-console.log(findEvenIndex([1, 2, 3, 4, 3, 2, 1])); // 3
-console.log(findEvenIndex([1, 100, 50, -51, 1, 1])); // 1
-console.log(findEvenIndex([1, 2, 3, 4, 5, 6])); // -1
-console.log(findEvenIndex([20, 10, 30, 10, 10, 15, 35])); // 3
+// console.log(findEvenIndex([1, 2, 3, 4, 3, 2, 1])); // 3
+// console.log(findEvenIndex([1, 100, 50, -51, 1, 1])); // 1
+// console.log(findEvenIndex([1, 2, 3, 4, 5, 6])); // -1
+// console.log(findEvenIndex([20, 10, 30, 10, 10, 15, 35])); // 3
+console.log(findEvenIndex([1, 2, 3, 4, 5, 6])); // 3
