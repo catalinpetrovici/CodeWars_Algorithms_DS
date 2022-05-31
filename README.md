@@ -2,9 +2,9 @@
 
 CodeWars Challenges: [Visit Here](https://www.codewars.com/users/Petrovici%20Catalin/stats)
 
-![image](https://user-images.githubusercontent.com/73588411/170306614-d519e2c8-0744-4a03-924b-5c90a06a8b68.png)
+![image](https://user-images.githubusercontent.com/73588411/170989966-20a9c52b-bcad-4e26-a380-1a62ac127bdd.png)
 
-A repository filled with codewars challenges (kata). Currently Ranked #92,034 on the global leaderboard, Completed over 316+ kata and Push at least 20 solutions every week.
+A repository filled with codewars challenges (kata). Currently Ranked #82,311 on the global leaderboard, Completed over 340+ kata and Push at least 20 solutions every week.
 
 # How It's Made:
 Tech used: JavaScript
