@@ -3,14 +3,18 @@ const people = [
   { name: 'Beatrice An', cubes: 9 },
 ];
 
-// ?## find max value from an array
+// ?## find max & min value from an array
 
-const maxCubes = people.reduce((acc, curr) => {
-  if (curr.cubes > acc) return curr.cubes;
-  return acc;
-}, 0);
-
+const maxCubes = people.reduce(
+  (max, num) => (max > num.cubes ? max : num.cubes),
+  0
+);
 // => 12
+
+const minCubes = people.reduce((min, num) =>
+  min < num.cubes ? min : num.cubes
+);
+// => 9
 
 // ?## create a list of the initials for every single person
 
