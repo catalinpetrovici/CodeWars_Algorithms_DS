@@ -59,7 +59,7 @@ const memoizedClosureTimesMAccessor = (m) => {
   };
 };
 
-const memoClosureTimes10Accessor = memoizedClosureTimesMAccessor(10);
+let memoClosureTimes10Accessor = memoizedClosureTimesMAccessor(10);
 
 function loggingDecorator(wrapperFn, y) {
   let task = y;
@@ -84,9 +84,9 @@ function loggingDecorator(wrapperFn, y) {
   };
 }
 
-const wrappedCached = loggingDecorator(memoClosureTimes10Accessor, 1);
+memoClosureTimes10Accessor = loggingDecorator(memoClosureTimes10Accessor, 1);
 
-wrappedCached.store(9);
-wrappedCached.store(9);
-wrappedCached.store(12);
-wrappedCached.store(12);
+memoClosureTimes10Accessor.store(9);
+memoClosureTimes10Accessor.store(9);
+memoClosureTimes10Accessor.store(12);
+memoClosureTimes10Accessor.store(12);

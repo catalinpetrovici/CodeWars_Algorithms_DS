@@ -10,7 +10,7 @@ console.log(`times10 returns:`, times10(9));
 // pro tip 2: If the value for n has not been calculated, calculate and than save the result in the cache object
 
 const cache = {};
-const memoTimes10 = (n) => {
+let memoTimes10 = (n) => {
   //   if (n in cache) {
   //     console.log(`Fetching from cache:`, n);
   //     return cache[n];
@@ -59,9 +59,9 @@ function loggingDecorator(wrapperFn, y) {
   };
 }
 
-const wrappedCached = loggingDecorator(memoTimes10, 2);
+memoTimes10 = loggingDecorator(memoTimes10, 2);
 
-wrappedCached.store(9);
-wrappedCached.store(9);
-wrappedCached.store(9);
-wrappedCached.store(10);
+memoTimes10.store(9);
+memoTimes10.store(9);
+memoTimes10.store(9);
+memoTimes10.store(10);
