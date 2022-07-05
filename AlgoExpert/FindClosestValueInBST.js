@@ -2,10 +2,18 @@
 
 // We are given a binary search tree and a target, and we are tasked with finding a value in the binary search tree that is closest to value of the given target. In this problem, there will only be one closest value.
 
+// Sample Input:
+
 //                10
+//           /           \
 //         5              15
+//       /   \          /    \
 //     2       5      13      22
+//   /                   \
 // 1                      14
+
+// For target = 12 the output should be: 13
+// For target = 3 the output should be: 2
 
 const data = {
   number: 10,
@@ -28,6 +36,8 @@ const data = {
     },
   },
 };
+
+// Approach 1: Recursive
 
 // Complexity Analysis
 // Time Complexity: Avg: O(log N) / Worst: O(N)
@@ -57,12 +67,14 @@ function findClosestValueInBstHelper(tree, target, closest) {
   return closest;
 }
 
-// console.log(findTheClosestElementInABinarySearchTree(data, 12));
-// console.log(findTheClosestElementInABinarySearchTree(data, 3));
+// console.log(findTheClosestElementInABinarySearchTree(data, 12)); // 13
+// console.log(findTheClosestElementInABinarySearchTree(data, 3)); // 2
+// console.log(findTheClosestElementInABinarySearchTree(data, 20)); // 22
+// console.log(findTheClosestElementInABinarySearchTree(data, 4)); // 5
 
 // ##################################################################################
 
-// Iterative
+// Approach 2: Iterative
 
 // Complexity Analysis
 // Time Complexity: Avg: O(log N) / Worst: O(N)
@@ -81,10 +93,8 @@ function findClosestValueInBstHelperIterative(tree, target, closest) {
     }
 
     if (target < currentNode.number) {
-      console.log('left');
       currentNode = currentNode.less;
     } else if (target > currentNode.number) {
-      console.log('right');
       currentNode = currentNode.greater;
     } else {
       break;
@@ -94,5 +104,7 @@ function findClosestValueInBstHelperIterative(tree, target, closest) {
   return closest;
 }
 
-console.log(findTheClosestElementInABinarySearchTreeIterative(data, 12));
-console.log(findTheClosestElementInABinarySearchTreeIterative(data, 3));
+// console.log(findTheClosestElementInABinarySearchTreeIterative(data, 12)); // 13
+// console.log(findTheClosestElementInABinarySearchTreeIterative(data, 3)); // 2
+// console.log(findTheClosestElementInABinarySearchTree(data, 20)); // 22
+// console.log(findTheClosestElementInABinarySearchTree(data, 4)); // 5
