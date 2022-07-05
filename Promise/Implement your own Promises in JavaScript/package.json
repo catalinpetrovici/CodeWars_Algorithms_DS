@@ -1,0 +1,14 @@
+{
+  "name": "own-promise",
+  "version": "1.0.0",
+  "description": "",
+  "main": "MyPromise.js",
+  "scripts": {
+    "test": "jest --watchAll --noStackTrace"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^28.1.0"
+  }
+}
