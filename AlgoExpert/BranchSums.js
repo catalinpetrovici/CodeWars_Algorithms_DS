@@ -21,6 +21,26 @@
 // Time Complexity: Avg: O(N) / Worst: O(log N)
 // Space Complexity: Avg: O(N)
 
+const data = {
+  value: 1,
+  right: {
+    value: 3,
+    right: { value: 7 },
+    left: {
+      value: 6,
+    },
+  },
+  left: {
+    value: 2,
+    right: { value: 5 },
+    left: {
+      value: 4,
+      right: { value: 9 },
+      left: { value: 8 },
+    },
+  },
+};
+
 class BinaryTree {
   constructor(value) {
     this.value = value;
@@ -29,27 +49,33 @@ class BinaryTree {
   }
 }
 
-const data = {
-  value: 1,
-  right: {
-    value: 3,
-    right: { value: 7, right: {}, left: {} },
-    left: {
-      value: 6,
-      right: {},
-      left: {},
-    },
-  },
-  left: {
-    value: 2,
-    right: { value: 5, right: {}, left: {} },
-    left: {
-      value: 4,
-      right: { value: 9, right: {}, left: {} },
-      left: { value: 8, right: {}, left: {} },
-    },
-  },
-};
+function branchSumsIte(root) {
+  const sums = [];
+  const stack = [{ node: root, runningSum: 0 }];
+
+  while (stack.length > 0) {
+    const { node, runningSum } = stack.pop();
+
+    const newRunningSum = runningSum + node.value;
+
+    if (!node.left && !node.right) {
+      sums.push(newRunningSum);
+      continue;
+    }
+
+    if (node.right) {
+      stack.push({ node: node.right, runningSum: newRunningSum });
+    }
+
+    if (node.left) {
+      stack.push({ node: node.left, runningSum: newRunningSum });
+    }
+  }
+
+  return sums;
+}
+
+// console.log(branchSumsIte(data));
 
 // ########################################################
 
@@ -59,7 +85,7 @@ const data = {
 // Time Complexity: O(N)
 // Space Complexity: O(N)
 
-function branchSums(root) {
+function branchSumsRec(root) {
   const sums = [];
   calculateBranchSums(root, 0, sums);
   return sums;
@@ -68,7 +94,6 @@ function branchSums(root) {
 function calculateBranchSums(node, runningSum = 0, sums = null) {
   if (!node.value) node.value = null;
   const newRunningSum = runningSum + node.value;
-  console.log(node);
   if (!node) return;
 
   if (!node.left && !node.right) {
@@ -80,10 +105,7 @@ function calculateBranchSums(node, runningSum = 0, sums = null) {
   calculateBranchSums(node.right, newRunningSum, sums);
 }
 
-console.log(branchSums(data));
+console.log(branchSumsRec(data));
 
 // returns
-// [
-//     15, 15, 16, 16,  8,
-//      8, 10, 10, 11, 11
-//   ]
+//     [ 15, 16, 8, 10, 11 ]
